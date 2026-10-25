@@ -11,7 +11,7 @@
 - [x] 2. About + Skills (grouped skills)
 - [x] 3. Experience (timeline)
 - [x] 4. Contact (+ education)
-- [ ] 5. Polish: nav links to new sections (header currently has only the logo; add links once the sections exist), meta/OG, accessibility check
+- [~] 5. Polish (nav links, og:url/canonical/twitter card, darker --turquoise-deep for AA contrast DONE; accessibility pass still to do): nav links to new sections (header currently has only the logo; add links once the sections exist), meta/OG, accessibility check
 - [ ] 6. Put the live URL on the resume
 - [ ] Optional: sample project/dashboard showcase (needs real or anonymized examples from John Rey), Figma version
 

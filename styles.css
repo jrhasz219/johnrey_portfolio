@@ -64,7 +64,7 @@
   --ink: #0c2233;              /* main text, deep blue-navy */
   --ink-soft: #4a6275;         /* secondary text */
   --turquoise: #14b8a6;
-  --turquoise-deep: #0b8f87;   /* text-safe turquoise on white */
+  --turquoise-deep: #0a7a73;   /* text-safe turquoise (5.2:1 on white, passes AA) */
   --blue: #2f6bff;
   --blue-deep: #1d4ed8;
   --sky: #7dd3fc;
@@ -153,6 +153,37 @@ a { color: inherit; }
   line-height: 1;
 }
 .brand span { color: var(--turquoise-deep); }
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3vw, 32px);
+}
+.site-nav a {
+  position: relative;
+  padding-block: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(100deg, var(--turquoise), var(--blue));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s;
+}
+.site-nav a:hover,
+.site-nav a:focus-visible { color: var(--ink); }
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after { transform: scaleX(1); }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -744,6 +775,10 @@ a { color: inherit; }
 @media (max-width: 640px) {
   .skill-grid { grid-template-columns: 1fr; }
   .approach { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .site-nav { gap: 12px; }
+  .site-nav a { font-size: 0.74rem; }
 }
 @media (max-width: 560px) {
   .highlights ul { grid-template-columns: 1fr; }
