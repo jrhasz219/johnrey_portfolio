@@ -1,22 +1,24 @@
 # Portfolio progress: John Rey S. Santos
 
 > **Start of every new chat, say:** "Read PROGRESS.md in jrhasz219/johnrey_portfolio and continue with the next step."
-> Update this file at the end of every session.
+> Update this file at the end of every session. Session log is newest first.
 
 ## NEXT STEP
-**Step 6: put the live URL on the resume** (https://jrhasz219.github.io/johnrey_portfolio/), then the optional items (Projects section is on hold until he sends screenshots, see Plan; Figma version). Step 5 Polish is DONE; ignore the details below.
+**Step 6: put the live URL on the resume:** https://jrhasz219.github.io/johnrey_portfolio/ (the resume itself is not in the repo; John Rey updates it, or shares a copy without the phone number for help).
 
-(Old step 5 notes:) All content sections exist. Do: (a) add nav links in the header (About, Skills, Experience, Contact; the header currently has only the logo; keep it clean on mobile, e.g. hide or collapse the links under ~640px), (b) meta/OG (add `og:url`, consider an OG image only if the user supplies one), (c) accessibility check (headings order, contrast, focus states, link names, reduced motion). The live site deploys fine (Actions run for 6162bd5 succeeded, Pages set to main / root). If an automated fetch shows only the hero, that is a stale cache on the fetching side, not a deploy problem; ask the user to hard refresh instead.
+After that, the optional items (see Plan): the **Projects section** (on hold until John Rey has his Power BI screenshots) and a Figma version.
 
-## Plan (one section per session)
-- [x] 1. Hero / summary intro (header with logo only, name, role, summary, tool chips, LinkedIn button, decorative chart card, 3-stat strip, footer). Iterated once after review (see session log).
+All four content sections, the polish step and an accessibility audit are DONE. The site is considered finished apart from the items above.
+
+## Plan
+- [x] 1. Hero / summary intro (logo + nav header, name, role, summary, tool chips, LinkedIn button, decorative chart card, 2-stat strip, footer)
 - [x] 2. About + Skills (grouped skills)
 - [x] 3. Experience (timeline)
-- [x] 4. Contact (+ education)
-- [x] 5. Polish (nav links, og:url/canonical/twitter card, darker --turquoise-deep, axe audit clean at 1280px and 390px, heading order OK): nav links to new sections (header currently has only the logo; add links once the sections exist), meta/OG, accessibility check
+- [x] 4. Contact (centred card: email as plain text + LinkedIn button; education was removed on request)
+- [x] 5. Polish (header nav, canonical/og:url/twitter card, AA-contrast turquoise, axe audit clean at 1280px and 390px, heading order OK)
 - [ ] 6. Put the live URL on the resume
 - [ ] Optional: **Projects section** (ON HOLD until John Rey has his Power BI screenshots ready), Figma version
-  - Plan agreed in session 7: new `#projects` section between Skills and Experience, eyebrow `// projects`, add "Projects" to the header nav. One card per project: screenshot, short title, one line on what it does, tools as chips (reuse `.chips`, `.skill-card` style).
+  - Plan agreed (session 7): new `#projects` section between Skills and Experience, eyebrow `// projects`, add "Projects" to the header nav. One card per project: screenshot, short title, one line on what it does, tools as chips (reuse `.chips` and the `.skill-card` style). `index.html` has a `FUTURE` comment marking the spot.
   - Power BI reports cannot run inside this plain HTML site. Use screenshots (or a short GIF/video). A link button only if the report is publicly viewable (Publish to web exposes it to anyone with the link).
   - Privacy: reports from ResultsCX may hold company or customer data. John Rey must anonymize (blur names/figures/branding) or use sample data, and confirm he is allowed to show them.
   - Needed from him: PNG/JPG screenshots plus 1-2 sentences per project. Do not invent descriptions or numbers.
@@ -25,29 +27,40 @@
 ## Repo and hosting
 - Repo: https://github.com/jrhasz219/johnrey_portfolio (branch `main`, plain HTML/CSS, no build step)
 - **Live URL (GitHub Pages is ON, deploys from `main` / root):** https://jrhasz219.github.io/johnrey_portfolio/
-- Every push to `main` updates the live site after about a minute.
+- Every push to `main` updates the live site after about a minute. The Actions "pages build and deployment" run should show Success.
+- If an automated fetch (from the sandbox) shows an old page, that is a stale cache on the fetching side; ask the user to hard refresh (Ctrl+Shift+R).
+- **Cache busting:** `index.html` links `styles.css?v=NN`. **Bump NN every time `styles.css` changes** (currently `v=11`) so visitors never see stale CSS.
 
 ## Files
-- `index.html`: page markup, one `<section>` per portfolio section
-- `styles.css`: design tokens at the top (`:root`), then base, then one block per section
+- `index.html`: page markup, one `<section>` per portfolio section (`#top` hero, `#about`, `#skills`, `#experience`, `#contact`), plus a small inline script at the end (see Behaviour)
+- `styles.css`: design tokens at the top (`:root`), then base, then one block per section. Shared pieces: `.section`, `.section-head`, `.chips`, `.btn`, `.btn-primary`
 - `assets/fonts/`: self-hosted woff2 fonts (no external requests)
+- `assets/deco/`: three subtle geometric line-art SVGs (`deco-a|b|c.svg`) used as section background decoration via `::after`
+- `README.md`: one-paragraph description and link to this file
+
+## Behaviour (keep)
+- Page always opens at the intro: inline script sets `history.scrollRestoration = "manual"`, strips any `#hash` on load and scrolls to top. Header links smooth-scroll without writing a hash to the URL (a hash used to make a refresh jump to that section).
+- Header nav: About, Skills, Experience, Contact; stays on one row down to 320px.
+- Sticky header is 68px; `.section` has `scroll-margin-top: 68px`.
 
 ## Design decisions (keep consistent)
-- **Feel:** modern minimalist, tech / data-analyst, white background, lots of space
-- **Colours (tokens):** white `--bg #fff`; turquoise `--turquoise #14b8a6`, `--turquoise-deep #0b8f87` (use for text); blue `--blue #2f6bff`, `--blue-deep #1d4ed8`; sky `#7dd3fc`; tiny warm accent `--sand #ffd9a8` (sparingly); ink `--ink #0c2233`, `--ink-soft #4a6275`; washes `--surface #f4fbfb`, `--surface-2 #eef4ff`; hairlines `--line #dcebec`
-- **Fonts:** Cormorant Garamond *italic* 500/600 for display (name, big numbers, logo; this carries the calligraphy feel) / Inter 400-600 for body / JetBrains Mono for small labels, chips, code-style details
-- **Gradient:** turquoise to blue, used on the surname, the primary button and chart only
+- **Feel:** modern minimalist, tech / data-analyst, white background, lots of space, subtle geometric line art in section corners. **No dot grid** (removed on request).
+- **Colours (tokens):** white `--bg #fff`; turquoise `--turquoise #14b8a6`, `--turquoise-deep #0a7a73` (use for text; AA on white); blue `--blue #2f6bff`, `--blue-deep #1d4ed8`; sky `#7dd3fc`; tiny warm accent `--sand #ffd9a8` (sparingly); ink `--ink #0c2233`, `--ink-soft #4a6275`; washes `--surface #f4fbfb`, `--surface-2 #eef4ff`; hairlines `--line #dcebec`
+- **Fonts:** Cormorant Garamond *italic* 500/600 for display (name, headings, big numbers, logo; this carries the calligraphy feel) / Inter 400-600 for body / JetBrains Mono for small labels, chips, code-style details
+- **Gradient:** turquoise to blue, used on the surname, the accent word in each section heading, the primary button and the chart
 - **Voice:** first person, plain, no invented numbers. Stats must come from the resume.
-- **Experience wording:** never write "14 years" or "14+" as a number. Imply it with "Since 2012" (user's request).
-- **Buttons:** no empty or placeholder buttons. Only add a button if it links somewhere real.
+- **Experience wording:** never write "14 years" or "14+" as a number. "Since 2012" is used only in the Experience heading (the intro stat was removed on request).
+- **Buttons:** no empty or placeholder buttons. Only add a button if it links somewhere real. LinkedIn is the only button (hero and contact).
 - **Motion:** gentle fade-up and chart draw-in; all wrapped in `prefers-reduced-motion`
-- **Code-flavoured touches:** `// comment` eyebrow, `report.sql` card, mono chips. Repeat sparingly (e.g. `// skills`, `// experience` as section eyebrows).
-- Light theme only. Mobile first-class (checked at 390px and 1280px).
+- **Code-flavoured touches:** `// comment` eyebrow, `report.sql` card, mono chips. Repeat sparingly (`// about`, `// skills`, `// experience`, `// contact` as section eyebrows).
+- Light theme only. Mobile first-class (checked at 390px, 320px for the nav, and 1280px).
+- Accessibility: axe-core audit clean; headings h1 > h2 > h3; LinkedIn links labelled "opens in a new tab"; skip link; visible focus states.
 
 ## Privacy choices
 - Phone number is **not** on the site (public page).
 - Location on the site is shown as "NCR, Philippines" (user's choice), not Quezon City.
-- Email **is shown** as plain text, NOT a link (user's decision, session 7): 19jrsantos@gmail.com in the Contact section. Phone stays off the site.
+- Email **is shown** as plain text, NOT a link (user's decision): 19jrsantos@gmail.com in the Contact section.
+- **Education is not on the site** (removed on request). It is still in the Content bank and on the resume.
 - Resume PDF is **not** in the repo (contains phone). If a download button is wanted, use a version without the phone number.
 
 ## Content bank (from the resume)
@@ -87,14 +100,15 @@
 
 **Education:** Saint Louis University, Philippines. Bachelor of Science in Human Resources Development Management, 2007 - 2012
 
-## Session log
-- **Session 1:** Built Section 1 (hero/summary). Self-hosted fonts. Checked at desktop and mobile widths. Pushed to `main`.
-- **Session 7 (iterations):** (1) Page now always opens at the intro: nav clicks used to leave `#about` etc. in the URL so a refresh jumped there. Small inline script at the end of `index.html` sets `history.scrollRestoration = "manual"`, strips any hash on load, scrolls to top, and smooth-scrolls header links without writing a hash. (2) Contact: removed the "Send an email" button; the email is plain text, no mailto link anywhere (user's choice). LinkedIn is the single primary button. (3) Subtle tech background: one geometric line-art SVG per section (`assets/deco/deco-a|b|c.svg`: hexagons, triangle, rings, plus signs) placed with `::after` at section edges, low opacity, dimmer on mobile. `.skills` / `.contact` washes made translucent so the dots show through. Tested at 1280/390: no overflow.
-- **Session 9:** Contact alignment pass. User's screenshot showed the OLD CSS (full-width, left-aligned card) because the browser had cached `styles.css`; added a version query (`styles.css?v=10`). **Bump that number whenever styles.css changes** so visitors never see stale CSS. Contact section tightened (less padding, card max 640px, centred), footer text centred. Checked at 1280/390.
-- **Session 8:** Removed the "Since 2012" stat from the at-a-glance strip (now 2 stats: 3 BI tools, 3 data platforms; grid is 2 columns). Removed the Education card from Contact (education is NOT on the site now; the resume still has it). Contact is now a single centred card (max 720px) with centred heading, email as plain text, LinkedIn button. Experience heading still says "Since 2012" (user only asked to change the Intro). Checked at 1280/390, no overflow.
-- **Session 7b:** Removed the body dot grid at the user's request; the geometric line art per section stays. `.skills` / `.contact` washes are still translucent (harmless).
-- **Session 6:** Polish finished. An earlier session hit its usage limit midway through Polish and left uncommitted nav/meta/contrast edits; reviewed, tested nav at 1280/390/320px, committed (a20f87a). Ran axe-core: only issue was the Education card being an `aside` inside `main`, now a `div role=group`. LinkedIn links now have an accessible name saying they open in a new tab. Headings go h1 > h2 > h3 in order. Live deploy confirmed healthy.
-- **Session 5:** Built Section 4. `#contact`: heading "Let's connect", a contact card (short lead, email as mono mailto link, "Send an email" primary button, LinkedIn outline button, "// NCR, Philippines") and an Education card (Saint Louis University, BS Human Resources Development Management, 2007 - 2012, Philippines). Added `.btn-outline`. Stacks to one column under 860px. Checked at 1280px and 390px: no horizontal overflow. **Live-site issue:** fetching https://jrhasz219.github.io/johnrey_portfolio/ (twice, second with a cache-busting query) returned only the hero, with no About/Skills/Experience, although `origin/main` contains them (commit b422c41 verified). The Pages build status could not be read from the sandbox (GitHub API blocked). **Resolved:** the user confirmed Settings > Pages (main / root) and the Actions run for 6162bd5 succeeded, so the deploy is fine and the stale view was on the fetching side.
-- **Session 4:** Built Section 3. `#experience`: vertical timeline (date + company column, rail with nodes, role content), three entries from the resume: Ops Reporting Analyst (Feb 2021 - Present), Interaction Analytics Analyst (Feb 2017 - Feb 2021), Earlier roles (Aug 2012 - Feb 2017, with the three earlier titles as chips with dates). Bullets are the resume bullets as written. Heading: "Since 2012, in operations and reporting". Under 760px the rail moves to the left edge and dates sit above each role. Checked at 1280px and 390px: no horizontal overflow. Fixed date ranges wrapping mid-date inside the earlier-role chips on mobile (nowrap, dates on their own line). Company shown as ResultsCX on all three entries per the Content bank.
-- **Session 3:** Built Section 2. `#about`: heading left, two paragraphs right (career path from 2012, interaction analytics 2017-2021, Ops Reporting since 2021) plus a 2x2 "how I work" grid (requirements, validation, automation, root cause), all taken from the resume. `#skills`: six grouped cards (the six groups in the Content bank) with chips, 3 columns on desktop, 2 on tablet, 1 on mobile. Added shared `.section` / `.section-head` / `.chips` styles to reuse. `.section` has `scroll-margin-top: 68px` for the sticky header. Checked at 1280px and 390px: no horizontal overflow. Fixed "know-how" splitting at the hyphen (`white-space: nowrap` on the heading accent). No nav links yet (Section 5).
+## Session log (newest first)
+- **Session 10:** Review and finalize. Rewrote this file (fixed outdated details: stat count, education, old step-5 notes, dot-grid mentions; sessions now newest first; added Behaviour and cache-busting notes). Removed unused `.btn-outline` CSS, fixed two stale HTML comments, wrote `README.md`, bumped `styles.css?v=11`. Final checks run (axe, overflow at 1280/390, hash/refresh test). Nothing else outstanding.
+- **Session 9:** Contact alignment pass. User's screenshot showed the OLD CSS (full-width, left-aligned card) because the browser had cached `styles.css`; added a version query on the stylesheet link. Contact section tightened (less padding, card max 640px, centred), footer text centred. Checked at 1280/390.
+- **Session 8:** Removed the "Since 2012" stat from the at-a-glance strip (now 2 stats: 3 BI tools, 3 data platforms; grid is 2 columns). Removed the Education card from Contact. Contact became a single centred card. Experience heading still says "Since 2012" (user only asked to change the Intro). Checked at 1280/390.
+- **Session 7b:** Removed the body dot grid at the user's request; the geometric line art per section stays.
+- **Session 7 (iterations):** (1) Page always opens at the intro (see Behaviour). (2) Contact: removed the "Send an email" button; email is plain text with no mailto link anywhere. (3) Subtle tech background: a faint dot grid (later removed, see 7b) plus one geometric line-art SVG per section (`assets/deco/`), placed with `::after` at section edges, low opacity, dimmer on mobile. `.skills` / `.contact` washes were made translucent. Also agreed the Projects section plan (see Plan). Tested at 1280/390: no overflow.
+- **Session 6:** Polish finished. An earlier session hit its usage limit midway through Polish and left uncommitted nav/meta/contrast edits; reviewed, tested nav at 1280/390/320px, committed (a20f87a). Ran axe-core: only issue was the Education card being an `aside` inside `main` (card since removed). LinkedIn links now have an accessible name saying they open in a new tab. Headings go h1 > h2 > h3 in order.
+- **Session 5:** Built Section 4 (Contact + Education; both later reworked in sessions 7-9, so the details of that first version no longer apply). Live-site check: an automated fetch showed only the hero although `origin/main` had all sections. **Resolved:** the user confirmed Settings > Pages (main / root) and the Actions run succeeded, so the deploy was fine and the stale view was on the fetching side.
+- **Session 4:** Built Section 3. `#experience`: vertical timeline (date + company column, rail with nodes, role content), three entries from the resume: Ops Reporting Analyst (Feb 2021 - Present), Interaction Analytics Analyst (Feb 2017 - Feb 2021), Earlier roles (Aug 2012 - Feb 2017, with the three earlier titles as chips with dates). Bullets are the resume bullets as written. Heading: "Since 2012, in operations and reporting". Under 760px the rail moves to the left edge and dates sit above each role. Fixed date ranges wrapping mid-date inside the earlier-role chips on mobile. Company shown as ResultsCX on all three entries per the Content bank.
+- **Session 3:** Built Section 2. `#about`: heading left, two paragraphs right plus a 2x2 "how I work" grid (requirements, validation, automation, root cause), all taken from the resume. `#skills`: six grouped cards with chips, 3 columns on desktop, 2 on tablet, 1 on mobile. Added shared `.section` / `.section-head` / `.chips` styles. Fixed "know-how" splitting at the hyphen (`white-space: nowrap` on the heading accent).
 - **Session 2 (iteration on Section 1):** Removed the "say hello" header button and the "Get in touch" button. LinkedIn is now the single primary (gradient) button. Location changed to "NCR, Philippines". First stat changed from "14 years" to "Since 2012". Removed the unused `.nav-link` and `.btn-ghost` CSS. Confirmed GitHub Pages is live.
+- **Session 1:** Built Section 1 (hero/summary). Self-hosted fonts. Checked at desktop and mobile widths. Pushed to `main`.
