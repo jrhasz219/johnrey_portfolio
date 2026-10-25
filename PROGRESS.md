@@ -7,18 +7,18 @@
 **Section 2: About + Skills.** Content is in "Content bank" below. Add it inside `<main>` in `index.html` where the `NEXT SECTIONS GO HERE` comment is. Reuse the tokens in `styles.css` (`:root`) and the existing classes.
 
 ## Plan (one section per session)
-- [x] 1. Hero / summary intro (header, name, role, summary, tool chips, CTA buttons, decorative chart card, 3-stat strip, footer)
+- [x] 1. Hero / summary intro (header with logo only, name, role, summary, tool chips, LinkedIn button, decorative chart card, 3-stat strip, footer). Iterated once after review (see session log).
 - [ ] 2. About + Skills (grouped skills)
 - [ ] 3. Experience (timeline)
 - [ ] 4. Contact (+ education)
-- [ ] 5. Polish: nav links to new sections, meta/OG, accessibility check, turn on GitHub Pages
+- [ ] 5. Polish: nav links to new sections (header currently has only the logo; add links once the sections exist), meta/OG, accessibility check
 - [ ] 6. Put the live URL on the resume
 - [ ] Optional: sample project/dashboard showcase (needs real or anonymized examples from John Rey), Figma version
 
 ## Repo and hosting
 - Repo: https://github.com/jrhasz219/johnrey_portfolio (branch `main`, plain HTML/CSS, no build step)
-- Planned URL after GitHub Pages is on: https://jrhasz219.github.io/johnrey_portfolio/
-- To turn on Pages: repo Settings > Pages > Source "Deploy from a branch" > `main` / `(root)` > Save. Not done yet.
+- **Live URL (GitHub Pages is ON, deploys from `main` / root):** https://jrhasz219.github.io/johnrey_portfolio/
+- Every push to `main` updates the live site after about a minute.
 
 ## Files
 - `index.html`: page markup, one `<section>` per portfolio section
@@ -31,12 +31,16 @@
 - **Fonts:** Cormorant Garamond *italic* 500/600 for display (name, big numbers, logo; this carries the calligraphy feel) / Inter 400-600 for body / JetBrains Mono for small labels, chips, code-style details
 - **Gradient:** turquoise to blue, used on the surname, the primary button and chart only
 - **Voice:** first person, plain, no invented numbers. Stats must come from the resume.
+- **Experience wording:** never write "14 years" or "14+" as a number. Imply it with "Since 2012" (user's request).
+- **Buttons:** no empty or placeholder buttons. Only add a button if it links somewhere real.
 - **Motion:** gentle fade-up and chart draw-in; all wrapped in `prefers-reduced-motion`
 - **Code-flavoured touches:** `// comment` eyebrow, `report.sql` card, mono chips. Repeat sparingly (e.g. `// skills`, `// experience` as section eyebrows).
 - Light theme only. Mobile first-class (checked at 390px and 1280px).
 
 ## Privacy choices
-- Phone number is **not** on the site (public page). Only email + LinkedIn.
+- Phone number is **not** on the site (public page).
+- Location on the site is shown as "NCR, Philippines" (user's choice), not Quezon City.
+- Email is currently **not shown** anywhere on the page. Decide in the Contact section whether to show it (a mailto link) or keep LinkedIn only.
 - Resume PDF is **not** in the repo (contains phone). If a download button is wanted, use a version without the phone number.
 
 ## Content bank (from the resume)
@@ -77,4 +81,5 @@
 **Education:** Saint Louis University, Philippines. Bachelor of Science in Human Resources Development Management, 2007 - 2012
 
 ## Session log
-- **Session 1:** Built Section 1 (hero/summary). Self-hosted fonts. Checked at desktop and mobile widths. Pushed to `main`. GitHub Pages not enabled yet.
+- **Session 1:** Built Section 1 (hero/summary). Self-hosted fonts. Checked at desktop and mobile widths. Pushed to `main`.
+- **Session 2 (iteration on Section 1):** Removed the "say hello" header button and the "Get in touch" button. LinkedIn is now the single primary (gradient) button. Location changed to "NCR, Philippines". First stat changed from "14 years" to "Since 2012". Removed the unused `.nav-link` and `.btn-ghost` CSS. Confirmed GitHub Pages is live.
