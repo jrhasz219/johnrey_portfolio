@@ -371,6 +371,126 @@ a { color: inherit; }
   color: var(--ink-soft);
 }
 
+/* ---------- Shared section scaffolding ---------- */
+.section { padding-block: clamp(56px, 9vw, 112px); }
+.section-head .eyebrow { margin-bottom: 16px; }
+.section-head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(2.1rem, 4.6vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.section-head h2 .accent {
+  background: linear-gradient(100deg, var(--turquoise) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-right: 0.08em;
+  white-space: nowrap; /* keeps "know-how" from splitting at the hyphen */
+}
+
+/* sticky header is 68px tall: keep anchored sections clear of it */
+.section { scroll-margin-top: 68px; }
+
+/* ---------- About ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(28px, 6vw, 88px);
+  align-items: start;
+}
+.about-body p {
+  margin: 0 0 18px;
+  max-width: 62ch;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.4vw, 1.08rem);
+}
+
+.approach {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.approach li {
+  display: flex;
+  gap: 14px;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.approach .num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--turquoise-deep);
+  padding-top: 3px;
+}
+.approach h3 {
+  margin: 0 0 4px;
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+.approach p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+/* ---------- Skills ---------- */
+.skills {
+  background: linear-gradient(180deg, #fff, var(--surface-2) 140%);
+  border-top: 1px solid var(--line);
+}
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: clamp(28px, 4vw, 44px);
+}
+.skill-card {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.skill-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(20, 184, 166, 0.5);
+  box-shadow: 0 22px 40px -30px rgba(12, 34, 51, 0.35);
+}
+.skill-card h3 {
+  margin: 0 0 16px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--blue-deep);
+  letter-spacing: 0.01em;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chips li {
+  font-size: 0.84rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   padding-block: 28px;
@@ -418,9 +538,17 @@ a { color: inherit; }
 @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; }
   .viz-card { max-width: 520px; }
+  .about-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .skill-grid { grid-template-columns: 1fr; }
+  .approach { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .highlights ul { grid-template-columns: 1fr; }

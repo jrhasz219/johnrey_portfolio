@@ -4,11 +4,11 @@
 > Update this file at the end of every session.
 
 ## NEXT STEP
-**Section 2: About + Skills.** Content is in "Content bank" below. Add it inside `<main>` in `index.html` where the `NEXT SECTIONS GO HERE` comment is. Reuse the tokens in `styles.css` (`:root`) and the existing classes.
+**Section 3: Experience (timeline).** Content is in "Content bank" below (Ops Reporting Analyst, Interaction Analytics Analyst, earlier roles). Add it inside `<main>` in `index.html` where the `NEXT SECTIONS GO HERE` comment is, with `id="experience"`. Reuse the tokens in `styles.css` (`:root`) and the shared classes `.section`, `.section-head` (eyebrow + `h2` with `.accent`), `.chips`. Use `// experience` as the eyebrow. Never write "14 years"; "Since 2012" is fine.
 
 ## Plan (one section per session)
 - [x] 1. Hero / summary intro (header with logo only, name, role, summary, tool chips, LinkedIn button, decorative chart card, 3-stat strip, footer). Iterated once after review (see session log).
-- [ ] 2. About + Skills (grouped skills)
+- [x] 2. About + Skills (grouped skills)
 - [ ] 3. Experience (timeline)
 - [ ] 4. Contact (+ education)
 - [ ] 5. Polish: nav links to new sections (header currently has only the logo; add links once the sections exist), meta/OG, accessibility check
@@ -82,4 +82,5 @@
 
 ## Session log
 - **Session 1:** Built Section 1 (hero/summary). Self-hosted fonts. Checked at desktop and mobile widths. Pushed to `main`.
+- **Session 3:** Built Section 2. `#about`: heading left, two paragraphs right (career path from 2012, interaction analytics 2017-2021, Ops Reporting since 2021) plus a 2x2 "how I work" grid (requirements, validation, automation, root cause), all taken from the resume. `#skills`: six grouped cards (the six groups in the Content bank) with chips, 3 columns on desktop, 2 on tablet, 1 on mobile. Added shared `.section` / `.section-head` / `.chips` styles to reuse. `.section` has `scroll-margin-top: 68px` for the sticky header. Checked at 1280px and 390px: no horizontal overflow. Fixed "know-how" splitting at the hyphen (`white-space: nowrap` on the heading accent). No nav links yet (Section 5).
 - **Session 2 (iteration on Section 1):** Removed the "say hello" header button and the "Get in touch" button. LinkedIn is now the single primary (gradient) button. Location changed to "NCR, Philippines". First stat changed from "14 years" to "Since 2012". Removed the unused `.nav-link` and `.btn-ghost` CSS. Confirmed GitHub Pages is live.
