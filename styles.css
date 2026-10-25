@@ -90,7 +90,10 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  /* subtle tech dot grid */
+  background-image: radial-gradient(circle, rgba(12, 34, 51, 0.075) 1px, transparent 1.3px);
+  background-size: 30px 30px;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 1rem;
@@ -402,6 +405,50 @@ a { color: inherit; }
   color: var(--ink-soft);
 }
 
+/* ---------- Background decoration (subtle geometric line art) ---------- */
+.hero,
+.section { position: relative; overflow: hidden; }
+.hero::after,
+.section::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.hero > .container,
+.section > .container { position: relative; z-index: 1; }
+
+.hero::after {
+  width: min(460px, 60vw); aspect-ratio: 1;
+  left: -150px; bottom: -150px;
+  background-image: url("assets/deco/deco-c.svg");
+}
+.about::after {
+  width: min(520px, 70vw); aspect-ratio: 1;
+  left: -190px; bottom: -120px;
+  background-image: url("assets/deco/deco-a.svg");
+}
+.skills::after {
+  width: min(420px, 60vw); aspect-ratio: 1;
+  right: -120px; top: -90px;
+  background-image: url("assets/deco/deco-b.svg");
+}
+.experience::after {
+  width: min(480px, 60vw); aspect-ratio: 1;
+  right: -170px; bottom: -150px;
+  background-image: url("assets/deco/deco-c.svg");
+}
+.contact::after {
+  width: min(460px, 60vw); aspect-ratio: 1;
+  left: -150px; top: -110px;
+  background-image: url("assets/deco/deco-a.svg");
+}
+@media (max-width: 640px) {
+  .hero::after, .section::after { opacity: 0.6; }
+}
+
 /* ---------- Shared section scaffolding ---------- */
 .section { padding-block: clamp(56px, 9vw, 112px); }
 .section-head .eyebrow { margin-bottom: 16px; }
@@ -476,7 +523,7 @@ a { color: inherit; }
 
 /* ---------- Skills ---------- */
 .skills {
-  background: linear-gradient(180deg, #fff, var(--surface-2) 140%);
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(238,244,255,0.85));
   border-top: 1px solid var(--line);
 }
 .skill-grid {
@@ -625,7 +672,7 @@ a { color: inherit; }
 /* ---------- Contact + education ---------- */
 .contact {
   border-top: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--surface), #fff 70%);
+  background: linear-gradient(180deg, rgba(244,251,251,0.9), rgba(255,255,255,0) 70%);
 }
 .contact-grid {
   display: grid;
@@ -650,18 +697,13 @@ a { color: inherit; }
   font-size: clamp(1rem, 1.4vw, 1.08rem);
 }
 .contact-email {
-  display: inline-block;
-  margin-top: 22px;
+  margin: 22px 0 0;
   font-family: var(--font-mono);
   font-size: clamp(0.95rem, 2.6vw, 1.15rem);
   font-weight: 500;
   color: var(--blue-deep);
-  text-decoration: underline;
-  text-decoration-color: rgba(20, 184, 166, 0.55);
-  text-underline-offset: 6px;
   overflow-wrap: anywhere;
 }
-.contact-email:hover { text-decoration-color: var(--blue-deep); }
 .contact .actions { margin-top: 26px; }
 
 .btn-outline {
