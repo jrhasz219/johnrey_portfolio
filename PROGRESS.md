@@ -4,12 +4,12 @@
 > Update this file at the end of every session.
 
 ## NEXT STEP
-**Section 3: Experience (timeline).** Content is in "Content bank" below (Ops Reporting Analyst, Interaction Analytics Analyst, earlier roles). Add it inside `<main>` in `index.html` where the `NEXT SECTIONS GO HERE` comment is, with `id="experience"`. Reuse the tokens in `styles.css` (`:root`) and the shared classes `.section`, `.section-head` (eyebrow + `h2` with `.accent`), `.chips`. Use `// experience` as the eyebrow. Never write "14 years"; "Since 2012" is fine.
+**Section 4: Contact (+ education).** Education is in "Content bank" below. Add it inside `<main>` in `index.html` where the `NEXT SECTIONS GO HERE` comment is, with `id="contact"`. Reuse the tokens in `styles.css` (`:root`) and the shared classes `.section`, `.section-head` (eyebrow + `h2` with `.accent`), `.btn`, `.btn-primary`. Use `// contact` as the eyebrow. Decide with the user whether to show the email as a mailto link (it is not on the page yet) or keep LinkedIn only. Never add a phone number or empty buttons.
 
 ## Plan (one section per session)
 - [x] 1. Hero / summary intro (header with logo only, name, role, summary, tool chips, LinkedIn button, decorative chart card, 3-stat strip, footer). Iterated once after review (see session log).
 - [x] 2. About + Skills (grouped skills)
-- [ ] 3. Experience (timeline)
+- [x] 3. Experience (timeline)
 - [ ] 4. Contact (+ education)
 - [ ] 5. Polish: nav links to new sections (header currently has only the logo; add links once the sections exist), meta/OG, accessibility check
 - [ ] 6. Put the live URL on the resume
@@ -82,5 +82,6 @@
 
 ## Session log
 - **Session 1:** Built Section 1 (hero/summary). Self-hosted fonts. Checked at desktop and mobile widths. Pushed to `main`.
+- **Session 4:** Built Section 3. `#experience`: vertical timeline (date + company column, rail with nodes, role content), three entries from the resume: Ops Reporting Analyst (Feb 2021 - Present), Interaction Analytics Analyst (Feb 2017 - Feb 2021), Earlier roles (Aug 2012 - Feb 2017, with the three earlier titles as chips with dates). Bullets are the resume bullets as written. Heading: "Since 2012, in operations and reporting". Under 760px the rail moves to the left edge and dates sit above each role. Checked at 1280px and 390px: no horizontal overflow. Fixed date ranges wrapping mid-date inside the earlier-role chips on mobile (nowrap, dates on their own line). Company shown as ResultsCX on all three entries per the Content bank.
 - **Session 3:** Built Section 2. `#about`: heading left, two paragraphs right (career path from 2012, interaction analytics 2017-2021, Ops Reporting since 2021) plus a 2x2 "how I work" grid (requirements, validation, automation, root cause), all taken from the resume. `#skills`: six grouped cards (the six groups in the Content bank) with chips, 3 columns on desktop, 2 on tablet, 1 on mobile. Added shared `.section` / `.section-head` / `.chips` styles to reuse. `.section` has `scroll-margin-top: 68px` for the sticky header. Checked at 1280px and 390px: no horizontal overflow. Fixed "know-how" splitting at the hyphen (`white-space: nowrap` on the heading accent). No nav links yet (Section 5).
 - **Session 2 (iteration on Section 1):** Removed the "say hello" header button and the "Get in touch" button. LinkedIn is now the single primary (gradient) button. Location changed to "NCR, Philippines". First stat changed from "14 years" to "Since 2012". Removed the unused `.nav-link` and `.btn-ghost` CSS. Confirmed GitHub Pages is live.

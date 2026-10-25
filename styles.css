@@ -491,6 +491,106 @@ a { color: inherit; }
   color: var(--ink);
 }
 
+/* ---------- Experience (timeline) ---------- */
+.timeline {
+  position: relative;
+  margin: clamp(28px, 4vw, 48px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+/* vertical rail, sits in the gap between the date column and the content */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 232px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--turquoise), var(--blue) 60%, var(--line));
+}
+
+.job {
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  column-gap: 64px;
+  padding-bottom: clamp(36px, 5vw, 56px);
+}
+.job:last-child { padding-bottom: 0; }
+/* node on the rail */
+.job::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 227px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--turquoise);
+}
+.job:first-child::before { background: var(--turquoise); }
+
+.job-meta { padding-top: 2px; }
+.job-date {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--turquoise-deep);
+}
+.job-company {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.job-body h3 {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  line-height: 1.1;
+}
+.job-body > p {
+  margin: 0 0 16px;
+  max-width: 62ch;
+  color: var(--ink-soft);
+}
+.job-body ul:not(.chips) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 68ch;
+}
+.job-body ul:not(.chips) li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 9px;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+.job-body ul:not(.chips) li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 10px;
+  height: 1px;
+  background: var(--turquoise);
+}
+.chips.earlier { flex-direction: column; align-items: flex-start; gap: 8px; }
+.chips.earlier li small {
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  white-space: nowrap; /* keep each date range on one line */
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   padding-block: 28px;
@@ -545,6 +645,17 @@ a { color: inherit; }
   .hero-grid { grid-template-columns: 1fr; }
   .viz-card { max-width: 520px; }
   .about-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  /* timeline: rail moves to the left edge, dates sit above each role */
+  .timeline::before { left: 5px; }
+  .job { grid-template-columns: 1fr; padding-left: 30px; }
+  .job::before { left: 0; }
+  .job-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-bottom: 8px; }
+  .job-company { margin-top: 0; }
+  /* earlier-role chips: title on one line, dates underneath */
+  .chips.earlier li { border-radius: 14px; }
+  .chips.earlier li small { display: block; margin: 2px 0 0; }
 }
 @media (max-width: 640px) {
   .skill-grid { grid-template-columns: 1fr; }
