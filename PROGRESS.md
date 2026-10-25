@@ -49,7 +49,7 @@ All four content sections, the polish step and an accessibility audit are DONE. 
 - **Fonts:** Cormorant Garamond *italic* 500/600 for display (name, headings, big numbers, logo; this carries the calligraphy feel) / Inter 400-600 for body / JetBrains Mono for small labels, chips, code-style details
 - **Gradient:** turquoise to blue, used on the surname, the accent word in each section heading, the primary button and the chart
 - **Voice:** first person, plain, no invented numbers. Stats must come from the resume.
-- **Experience wording:** never write "14 years" or "14+" as a number. "Since 2012" is used only in the Experience heading (the intro stat was removed on request).
+- **Experience wording:** never write "14 years" or "14+" as a number. Do not use "Since 2012" in headings or stats (removed from the intro stat and the Experience heading on request). The 2012 start year still appears in the About text and the timeline dates.
 - **Buttons:** no empty or placeholder buttons. Only add a button if it links somewhere real. LinkedIn is the only button (hero and contact).
 - **Motion:** gentle fade-up and chart draw-in; all wrapped in `prefers-reduced-motion`
 - **Code-flavoured touches:** `// comment` eyebrow, `report.sql` card, mono chips. Repeat sparingly (`// about`, `// skills`, `// experience`, `// contact` as section eyebrows).
@@ -101,6 +101,7 @@ All four content sections, the polish step and an accessibility audit are DONE. 
 **Education:** Saint Louis University, Philippines. Bachelor of Science in Human Resources Development Management, 2007 - 2012
 
 ## Session log (newest first)
+- **Session 11:** Experience heading changed from "Since 2012, in operations and reporting" to "From operations to reporting" (no year, on request). HTML only, so the stylesheet version stays `v=11`.
 - **Session 10:** Review and finalize. Rewrote this file (fixed outdated details: stat count, education, old step-5 notes, dot-grid mentions; sessions now newest first; added Behaviour and cache-busting notes). Removed unused `.btn-outline` CSS, fixed two stale HTML comments, wrote `README.md`, bumped `styles.css?v=11`. Final checks run (axe, overflow at 1280/390, hash/refresh test). Nothing else outstanding.
 - **Session 9:** Contact alignment pass. User's screenshot showed the OLD CSS (full-width, left-aligned card) because the browser had cached `styles.css`; added a version query on the stylesheet link. Contact section tightened (less padding, card max 640px, centred), footer text centred. Checked at 1280/390.
 - **Session 8:** Removed the "Since 2012" stat from the at-a-glance strip (now 2 stats: 3 BI tools, 3 data platforms; grid is 2 columns). Removed the Education card from Contact. Contact became a single centred card. Experience heading still says "Since 2012" (user only asked to change the Intro). Checked at 1280/390.
