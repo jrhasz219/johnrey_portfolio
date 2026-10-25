@@ -4,7 +4,7 @@
 > Update this file at the end of every session.
 
 ## NEXT STEP
-**Step 6: put the live URL on the resume** (https://jrhasz219.github.io/johnrey_portfolio/), then the optional items (project showcase needs real or anonymized examples from John Rey; Figma version). Step 5 Polish is DONE; ignore the details below.
+**Step 6: put the live URL on the resume** (https://jrhasz219.github.io/johnrey_portfolio/), then the optional items (Projects section is on hold until he sends screenshots, see Plan; Figma version). Step 5 Polish is DONE; ignore the details below.
 
 (Old step 5 notes:) All content sections exist. Do: (a) add nav links in the header (About, Skills, Experience, Contact; the header currently has only the logo; keep it clean on mobile, e.g. hide or collapse the links under ~640px), (b) meta/OG (add `og:url`, consider an OG image only if the user supplies one), (c) accessibility check (headings order, contrast, focus states, link names, reduced motion). The live site deploys fine (Actions run for 6162bd5 succeeded, Pages set to main / root). If an automated fetch shows only the hero, that is a stale cache on the fetching side, not a deploy problem; ask the user to hard refresh instead.
 
@@ -15,7 +15,12 @@
 - [x] 4. Contact (+ education)
 - [x] 5. Polish (nav links, og:url/canonical/twitter card, darker --turquoise-deep, axe audit clean at 1280px and 390px, heading order OK): nav links to new sections (header currently has only the logo; add links once the sections exist), meta/OG, accessibility check
 - [ ] 6. Put the live URL on the resume
-- [ ] Optional: sample project/dashboard showcase (needs real or anonymized examples from John Rey), Figma version
+- [ ] Optional: **Projects section** (ON HOLD until John Rey has his Power BI screenshots ready), Figma version
+  - Plan agreed in session 7: new `#projects` section between Skills and Experience, eyebrow `// projects`, add "Projects" to the header nav. One card per project: screenshot, short title, one line on what it does, tools as chips (reuse `.chips`, `.skill-card` style).
+  - Power BI reports cannot run inside this plain HTML site. Use screenshots (or a short GIF/video). A link button only if the report is publicly viewable (Publish to web exposes it to anyone with the link).
+  - Privacy: reports from ResultsCX may hold company or customer data. John Rey must anonymize (blur names/figures/branding) or use sample data, and confirm he is allowed to show them.
+  - Needed from him: PNG/JPG screenshots plus 1-2 sentences per project. Do not invent descriptions or numbers.
+  - Put images in `assets/projects/`, compress them, give each meaningful `alt` text.
 
 ## Repo and hosting
 - Repo: https://github.com/jrhasz219/johnrey_portfolio (branch `main`, plain HTML/CSS, no build step)
